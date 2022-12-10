@@ -8,7 +8,7 @@ urlpatterns = [
     path("job/<int:pk>/update", views.updateJob, name="job-update"),
     path("job/<int:pk>/delete", views.deleteJob, name="job-delete"),
     path("stats/<str:topic>", views.getStats, name="get_topic_stats"),
-    path("jobs/<str:pk>/apply", views.applyToJob, name="applytojob"),
+    path("jobs/<int:pk>/apply", views.applyToJob, name="applytojob"),
     path(
         "getCurrentUserAppliedJobs/",
         views.getUserAppliedJobs,

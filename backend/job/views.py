@@ -38,13 +38,15 @@ def getAllJobs(request):
 @api_view(["GET"])
 def getJob(request, pk):
     job = get_object_or_404(Job, id=pk)
+    candidates = job.application_set.all().count()
     serializer = JobSerializer(job, many=False)
-    return Response(serializer.data)
+    return Response({"job": serializer.data, "candidates": candidates})
 
 
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def createJob(request):
+    request.data["user"] = request.user
     data = request.data
     job = Job.objects.create(**data)
     serializer = JobSerializer(job, many=False)
@@ -58,24 +60,26 @@ def updateJob(request, pk):
 
     if job.user != request.user:
         return Response(
-            {"message": "You cannot Update other's Job"},
+            {"message": "You cannot update other's Job"},
             status=status.HTTP_403_FORBIDDEN,
         )
 
-    job.title = request.data.get("title")
-    job.description = request.data.get("description")
-    job.email = request.data.get("email")
-    job.address = request.data.get("address")
-    job.jobType = request.data.get("jobType")
-    job.company = request.data.get("company")
-    job.education = request.data.get("education")
-    job.experience = request.data.get("experience")
-    job.industry = request.data.get("industry")
-    job.salary = request.data.get("salary")
-    job.position = request.data.get("position")
+    job.title = request.data["title"]
+    job.description = request.data["description"]
+    job.email = request.data["email"]
+    job.address = request.data["address"]
+    job.jobType = request.data["jobType"]
+    job.education = request.data["education"]
+    job.industry = request.data["industry"]
+    job.experience = request.data["experience"]
+    job.salary = request.data["salary"]
+    job.position = request.data["position"]
+    job.company = request.data["company"]
 
     job.save()
+
     serializer = JobSerializer(job, many=False)
+
     return Response(serializer.data)
 
 
@@ -168,7 +172,7 @@ def checkApplication(request, pk):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def getUserJobs(request):
-    args = {"user_id": request.user.id}
+    args = {"user": request.user.id}
     jobs = Job.objects.filter(**args)
     serializer = JobSerializer(jobs, many=True)
     return Response(serializer.data)
@@ -187,4 +191,4 @@ def UsersApplied(request, pk):
     args = {"job_id": request.user.id}
     users = job.application_set.all()
     serialilizer = ApplicationSerializer(users, many=True)
-    return Response(serialilizer.data)
+    return Response({"data":serialilizer.data,"name":job.title})

@@ -2,3 +2,4 @@ Jobbie/
 backend/db.sqlite3
 backend/backend/.env
 backend/static/
+frontend/next.config.js

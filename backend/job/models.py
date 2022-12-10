@@ -25,7 +25,8 @@ class Education(models.TextChoices):
 
 
 class Industry(models.TextChoices):
-    IT = "IT"
+    InformationTechnology = "Information Technology"
+    SoftwareDevelopment = "Software Development"
     Business = "Business"
     Banking = "Banking"
     Education = "Education"
@@ -35,8 +36,8 @@ class Industry(models.TextChoices):
 
 class Experience(models.TextChoices):
     No_Experience = "No Experience"
-    one_year = "1 years"
-    two_years = "2 years"
+    one_year = "1 Year"
+    two_years = "2 Years"
     Three_years_above = "3 years plus"
 
 

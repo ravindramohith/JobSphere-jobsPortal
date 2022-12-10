@@ -67,6 +67,7 @@ def updateCurrentUser(request):
 @permission_classes([IsAuthenticated])
 def uploadResume(request):
     user = request.user
+    print(request.FILES.get("resume"))
     resume = request.FILES["resume"]
 
     if resume == "":
