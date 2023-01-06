@@ -53,4 +53,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Used **ContextAPI** for ***connecting with backend*** and **Global State Management** of jobs and user authentication.
 - Implemented pagination for viewing all the Jobs in a systematic manner.
 - Implemented Filters on side bar to filter accordingly.
-
+- Used **leaflet to view all the maps**.
