@@ -4,7 +4,7 @@
 Server:
 ```bash 
 cd backend/
-python manage.py run server
+python manage.py runserver
 ```
 Client:
 ```bash
