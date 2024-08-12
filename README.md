@@ -27,7 +27,7 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Overview:
-- **Jobbie** is a Jobs portal where users can search their jobs, able to filter based on salary, domain, type of the Job and Qualifications.
+- **JobSphere** is a Jobs portal where users can search their jobs, able to filter based on salary, domain, type of the Job and Qualifications.
 - To apply a Job, A user should upload their resume. They can even update their resume over time.
 - User can also be able to create a Job which can be view by all other users. He can also view how many candidates applied for the job and their details also, and also he can update or delete Job. He is called ***admin*** of that particular job.
 - There is a map under each job which is the location of where the comapany is present.
